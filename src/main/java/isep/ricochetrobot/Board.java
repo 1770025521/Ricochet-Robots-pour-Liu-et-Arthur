@@ -9,13 +9,12 @@ public enum Board {
                     {
                             {6,1,1,1,1,1,1,1},
                             {4,0,0,0,0,0,0,0},
-                            {4,0,0,6,0,0,0,0},
                             {4,0,0,0,0,0,0,0},
-                            {6,0,5,0,0,0,0,0},
+                            {4,0,0,0,0,0,0,0},
+                            {4,0,0,0,0,0,0,0},
                             {4,0,0,0,0,0,0,0},
                             {4,0,0,0,0,0,0,3},
                             {4,0,0,0,0,0,2,0}
-
 
                     },
 
@@ -26,15 +25,14 @@ public enum Board {
 
             new int[][]
                     {
-                            {6,1,1,1,1,1,1,1},
+                            {6,1,1,1,6,1,1,1},
                             {4,0,0,0,0,0,0,0},
-                            {4,0,0,0,0,0,0,0},
-                            {4,0,0,0,0,0,0,0},
-                            {4,0,0,0,0,0,0,0},
-                            {4,0,0,0,0,0,0,0},
+                            {4,0,0,0,7,0,0,0},
+                            {4,0,6,0,0,0,0,0},
+                            {0,0,0,0,0,8,0,0},
+                            {7,0,0,5,0,0,0,0},
                             {4,0,0,0,0,0,0,3},
                             {4,0,0,0,0,0,2,0}
-
 
                     },
 
@@ -99,28 +97,16 @@ public enum Board {
 
     );
 
-    Cell[][] cells;
-    Symbol[][] symbols;
+
+    private final int[][] cells;
+    private final int[][] symbols;
 
     private Board(int[][] cells,int[][] symbols ){
-        this.cells = new Cell[12][12];
-        for(int y = 0; y < cells.length; y++ ){
-            for(int x = 0; x < cells.length; x++ ){
-                this.cells[x][y] = switch (cells[x][y]){
-                    case 0 -> Cell.NoWall;
-                    case 1 -> Cell.WallUp;
-                    case 2 -> Cell.WallRight;
-                    case 3 -> Cell.WallDown;
-                    case 4 -> Cell.WallLeft;
-                    case 5 -> Cell.WallUpRight;
-                    case 6 -> Cell.WallUpLeft;
-                    case 7 -> Cell.WallDownLeft;
-                    case 8 -> Cell.WallDownRight;
-                    default -> null;
-                };
-            }
-        }
-        this.symbols = new Symbol[12][12];
+        this.cells = cells;
+        this.symbols = symbols;
     }
 
+    public int[][] getCells() {
+        return this.cells;
+    }
 }

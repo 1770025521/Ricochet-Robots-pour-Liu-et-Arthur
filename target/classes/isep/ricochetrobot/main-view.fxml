@@ -6,11 +6,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isep.ricochetrobot.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isep.ricochetrobot.MainController">
    <children>
-      <Label fx:id="text1" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefHeight="50.0" prefWidth="600.0" text="COUCOU" textAlignment="CENTER" />
+      <Label fx:id="text1" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefHeight="50.0" prefWidth="800.0" text="COUCOU" textAlignment="CENTER" />
       <GridPane fx:id="gameGrid" gridLinesVisible="true" layoutX="0.0" layoutY="50.0" prefHeight="600.0" prefWidth="600.0">
          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
@@ -37,6 +41,11 @@
             <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+
          </rowConstraints>
       </GridPane>
    </children>

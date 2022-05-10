@@ -1,6 +1,7 @@
 package isep.ricochetrobot;
 
 public enum Cell {
+
     NoWall(new boolean[]{false, false, false, false},null),
 
     WallUp(new boolean[]{true, false, false, false},"WU.png"),
