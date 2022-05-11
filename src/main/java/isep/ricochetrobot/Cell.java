@@ -22,8 +22,11 @@ public enum Cell {
         this.url = url;
     }
 
-
     public String getUrl() {
-        return url;
+        return this.url;
+    }
+
+    public boolean[] getBlock() {
+        return this.block;
     }
 }

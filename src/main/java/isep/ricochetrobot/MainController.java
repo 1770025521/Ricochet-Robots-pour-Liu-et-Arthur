@@ -17,24 +17,10 @@ public class MainController implements Initializable {
 
     @FXML
     private GridPane gameGrid;
-/*
-    private int[][] board ={
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,1,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,6,0,0,0,0,0,0,0,5,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,5,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0}
-    };
-*/
+
     private GameBoard gb = new GameBoard();
     Cell [][] board = gb.getCells();
+    Symbol[][] symbols = gb.getSymbols();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,12 +35,18 @@ public class MainController implements Initializable {
                 tileGui.getChildren().add(tileBackground);
 
                 String wallUrl = board[x][y].getUrl();
+                String symbolUrl = symbols[x][y].getUrl();
 
                 if(wallUrl != null){
-                    System.out.println(wallUrl);
                     Image wallImage = new Image(wallUrl, 50, 50, false, false);
                     ImageView tileWall = new ImageView(wallImage);
                     tileGui.getChildren().add(tileWall);
+                }
+
+                if(symbolUrl != null){
+                    Image symbolImage = new Image(symbolUrl, 50, 50, false, false);
+                    ImageView tileSymbol = new ImageView(symbolImage);
+                    tileGui.getChildren().add(tileSymbol);
                 }
 
                 gameGrid.add(tileGui, x, y);

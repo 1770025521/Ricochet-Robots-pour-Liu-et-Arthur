@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="continuation du dernier stade" />
+    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="continuation du dernier stade">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/util.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +52,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Ricochet-Robots-pour-Liu-et-Arthur-dcb114ff7fac81d41a4a13d800599474f1f268c1" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources\wall" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -76,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652215708566</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="continuation du dernier stade">
+      <created>1652216290146</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652216290146</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
