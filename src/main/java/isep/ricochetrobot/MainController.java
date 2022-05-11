@@ -11,6 +11,8 @@ import javafx.scene.layout.StackPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static isep.ricochetrobot.Color.*;
+
 public class MainController implements Initializable {
     @FXML
     private Label text1;
@@ -18,14 +20,16 @@ public class MainController implements Initializable {
     @FXML
     private GridPane gameGrid;
 
-    private GameBoard gb = new GameBoard();
-    Cell [][] board = gb.getCells();
-    Symbol[][] symbols = gb.getSymbols();
+
+    Cell [][] board = GameBoard.context.getCells();
+    Symbol[][] symbols = GameBoard.context.getSymbols();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.text1.setText("Test grille");
+
         //initialisation de la grille
+
         Image tileImage = new Image("cell.png", 50, 50, false, false);
         for(int y = 0; y < board.length; y++ ){
             for (int x = 0; x < board.length; x++ ){
@@ -54,6 +58,22 @@ public class MainController implements Initializable {
             }
         }
 
+        //Creation des Robots
 
+        addRobot(RED);
+        addRobot(GREEN);
+        addRobot(BLUE);
+        addRobot(YELLOW);
+
+    }
+
+    private void addRobot(Color color) {
+        Robot robot = GameBoard.context.getRobots().get(color);
+        ImageView robotGui = new ImageView( new Image(robot.getUrl(),50,50, false, true) );
+        //robotGui.setOnMouseClicked
+        //        (event -> GameBoard.context.processSelectRobot(color));
+        gameGrid.add(robotGui, robot.getPosX(), robot.getPosY());
+        // Association de l' "ImageView" avec le robot stocké dans le jeu
+        robot.setGui(robotGui);
     }
 }

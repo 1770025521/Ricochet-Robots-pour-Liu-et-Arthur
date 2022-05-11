@@ -1,20 +1,40 @@
 package isep.ricochetrobot;
 
+import javafx.css.Size;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static isep.ricochetrobot.Color.*;
+
 public class GameBoard {
+
+    static GameBoard context;
 
     private Cell[][] cells;
     private Symbol[][] symbols;
+    private Map<Color,Robot> robots;
+    public static final int SIZE = 16;
 
-    public GameBoard(){
+    public static void start(){
+        if (GameBoard.context != null) {
+            throw new RuntimeException
+                    ("Impossible de lancer plusieurs fois la partie...");
+        }
+        GameBoard.context = new GameBoard();
+        //GameBoard.context.setStatus(CHOOSE_PLAYER);
+    }
+
+    private GameBoard(){
 
         /*
             Creation du plateau de jeu à partir de 4 planches
         */
 
-        Board plate1 = Board.PLANCHE1;
-        Board plate2 = Board.PLANCHE2;
+        Board plate1 = Board.PLANCHE4;
+        Board plate2 = Board.PLANCHE1;
         Board plate3 = Board.PLANCHE3;
-        Board plate4 = Board.PLANCHE4;
+        Board plate4 = Board.PLANCHE2;
 
         int[][] cells1 = plate1.getCells();
         int[][] cells2 = util.rotateTable(plate2.getCells()) ;
@@ -45,18 +65,11 @@ public class GameBoard {
                     default -> Cell.NoWall;
                 };
                 //Symbole
-                this.symbols[y][x] = switch (symbols1[x][y]){
-                    case 1 -> Symbol.YELLOWMOON;
-                    case 2 -> Symbol.BLUESUN;
-                    case 3 -> Symbol.GREENSTAR;
-                    case 4 -> Symbol.REDPLANET;
-                    default -> Symbol.NONE;
-                };
+                this.symbols[y][x] = pickSymbol (symbols1[x][y]);
             }
         }
 
         //Planche 2 : en haut à droite rotation de 90°
-
         for(int y = cells.length/2; y < cells.length; y++ ){
             for(int x = 0; x < cells.length/2; x++ ){
                 this.cells[y][x] = switch (cells2[x][y-8]){
@@ -72,18 +85,11 @@ public class GameBoard {
                     default -> null;
                 };
                 //Symbole
-                this.symbols[y][x] = switch (symbols2[x][y-8]){
-                    case 1 -> Symbol.YELLOWMOON;
-                    case 2 -> Symbol.BLUESUN;
-                    case 3 -> Symbol.GREENSTAR;
-                    case 4 -> Symbol.REDPLANET;
-                    default -> Symbol.NONE;
-                };
+                this.symbols[y][x] = pickSymbol (symbols2[x][y-8]);
             }
         }
 
         //Planche 3 : en bas à gauche rotation de -90°
-
         for(int y = 0; y < cells.length/2; y++ ){
             for(int x = cells.length/2; x < cells.length; x++ ){
                 this.cells[y][x] = switch (cells3[x-8][y]){
@@ -99,13 +105,7 @@ public class GameBoard {
                     default -> null;
                 };
                 //Symbole
-                this.symbols[y][x] = switch (symbols3[x-8][y]){
-                    case 1 -> Symbol.YELLOWMOON;
-                    case 2 -> Symbol.BLUESUN;
-                    case 3 -> Symbol.GREENSTAR;
-                    case 4 -> Symbol.REDPLANET;
-                    default -> Symbol.NONE;
-                };
+                this.symbols[y][x] = pickSymbol (symbols3[x-8][y]);
             }
         }
 
@@ -125,22 +125,52 @@ public class GameBoard {
                     default -> null;
                 };
                 //Symbole
-                this.symbols[y][x] = switch (symbols4[x-8][y-8]){
-                    case 1 -> Symbol.YELLOWMOON;
-                    case 2 -> Symbol.BLUESUN;
-                    case 3 -> Symbol.GREENSTAR;
-                    case 4 -> Symbol.REDPLANET;
-                    default -> Symbol.NONE;
-                };
+                this.symbols[y][x] = pickSymbol (symbols4[x-8][y-8]);
             }
         }
 
+        /*
+            Creation des Robots
+        */
+
+        robots = new HashMap<Color, Robot>();
+        robots.put(RED, new Robot(RED));
+        robots.put(GREEN, new Robot(GREEN));
+        robots.put(BLUE, new Robot(BLUE));
+        robots.put(YELLOW, new Robot(YELLOW));
     }
 
+    //Pour récupérer les symboles dans le constructeur
+    public Symbol pickSymbol(int id){
+        return switch (id){
+            case 1 -> Symbol.YELLOWMOON;
+            case 2 -> Symbol.BLUESUN;
+            case 3 -> Symbol.GREENSTAR;
+            case 4 -> Symbol.REDPLANET;
+            case 5 -> Symbol.BLUEMOON;
+            case 6 -> Symbol.REDSTAR;
+            case 7 -> Symbol.YELLOWSUN;
+            case 8 -> Symbol.GREENPLANET;
+            case 9 -> Symbol.GREENSUN;
+            case 10 -> Symbol.YELLOWSTAR;
+            case 11 -> Symbol.REDMOON;
+            case 12 -> Symbol.BLUEPLANET;
+            case 13 -> Symbol.YELLOWPLANET;
+            case 14 -> Symbol.GREENMOON;
+            case 15 -> Symbol.BLUESTAR;
+            case 16 -> Symbol.REDSUN;
+            default -> Symbol.NONE;
+        };
+    }
+
+    //Les getteurs
     public Cell[][] getCells(){
         return this.cells;
     }
     public Symbol[][] getSymbols(){
-        return  this.symbols;
+        return this.symbols;
+    }
+    public Map<Color, Robot> getRobots(){
+        return this.robots;
     }
 }
