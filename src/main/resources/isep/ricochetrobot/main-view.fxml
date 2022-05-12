@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isep.ricochetrobot.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isep.ricochetrobot.MainController">
    <children>
-      <Label fx:id="text1" alignment="CENTER" layoutX="0.0" layoutY="0.0" prefHeight="50.0" prefWidth="800.0" text="COUCOU" textAlignment="CENTER" />
-      <GridPane fx:id="gameGrid" gridLinesVisible="true" layoutX="0.0" layoutY="50.0" prefHeight="600.0" prefWidth="600.0">
+
+      <Label fx:id="text1" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" text="Nombre de coup" textAlignment="CENTER" />
+      <Label fx:id="textCount" alignment="CENTER" layoutX="200.0" prefHeight="50.0" prefWidth="200.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="text2" alignment="CENTER" layoutX="400.0" prefHeight="50.0" prefWidth="200.0" text="Timer" textAlignment="CENTER" />
+      <Label fx:id="textTimer" alignment="CENTER" layoutX="600.0" prefHeight="50.0" prefWidth="200.0" text="120s" textAlignment="CENTER" />
+
+      <GridPane fx:id="gameGrid" gridLinesVisible="true" layoutX="0.0" layoutY="50.0" prefHeight="600.0" prefWidth="600.0" styleClass="gameGrid">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="30.0" />
@@ -48,5 +55,12 @@
 
          </rowConstraints>
       </GridPane>
+
+            <StackPane fx:id="targetDisplayed" layoutX="350.0" layoutY="400.0" prefHeight="100.0" prefWidth="100.0" />
+
+      <Button fx:id="resetButton" layoutY="850.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="Reset" />
+      <Button fx:id="newTargetButton" layoutX="400.0" layoutY="850.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="New Target" />
+
+
    </children>
 </AnchorPane>

@@ -1,7 +1,6 @@
 package isep.ricochetrobot;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static isep.ricochetrobot.Color.*;
 import static isep.ricochetrobot.GameBoard.Status.*;
@@ -14,8 +13,12 @@ public class GameBoard {
     private Cell[][] cells;
     private Symbol[][] symbols;
     private Map<Color,Robot> robots;
+    private Map<Robot,int[]> robotsOrigin;
+    private List<Symbol> symbolList;
     public static final int SIZE = 16;
     private Robot selectedRobot;
+    private Symbol selectedSymbol;
+    private int count;
 
     private Status status;
 
@@ -39,6 +42,8 @@ public class GameBoard {
 
     private GameBoard(){
 
+        count = 0;
+
         /*
             Creation du plateau de jeu à partir de 4 planches
         */
@@ -60,6 +65,7 @@ public class GameBoard {
 
         this.cells = new Cell[16][16];
         this.symbols = new Symbol[16][16];
+        this.symbolList = new ArrayList<Symbol>();
 
         //Planche 1 : en haut à gauche
         for(int y = 0; y < cells.length/2; y++ ){
@@ -77,7 +83,13 @@ public class GameBoard {
                     default -> Cell.NoWall;
                 };
                 //Symbole
-                this.symbols[y][x] = pickSymbol (symbols1[x][y]);
+                Symbol symbol = pickSymbol (symbols1[x][y]);
+                this.symbols[y][x] = symbol;
+                if (symbol != Symbol.NONE){
+                    symbol.setPosX(y);
+                    symbol.setPosY(x);
+                    this.symbolList.add(symbol);
+                }
             }
         }
 
@@ -97,7 +109,13 @@ public class GameBoard {
                     default -> null;
                 };
                 //Symbole
-                this.symbols[y][x] = pickSymbol (symbols2[x][y-8]);
+                Symbol symbol = pickSymbol (symbols2[x][y-8]);
+                this.symbols[y][x] = symbol;
+                if (symbol != Symbol.NONE){
+                    symbol.setPosX(y);
+                    symbol.setPosY(x);
+                    this.symbolList.add(symbol);
+                }
             }
         }
 
@@ -117,7 +135,13 @@ public class GameBoard {
                     default -> null;
                 };
                 //Symbole
-                this.symbols[y][x] = pickSymbol (symbols3[x-8][y]);
+                Symbol symbol = pickSymbol (symbols3[x-8][y]);
+                this.symbols[y][x] = symbol;
+                if (symbol != Symbol.NONE){
+                    symbol.setPosX(y);
+                    symbol.setPosY(x);
+                    this.symbolList.add(symbol);
+                }
             }
         }
 
@@ -137,7 +161,13 @@ public class GameBoard {
                     default -> null;
                 };
                 //Symbole
-                this.symbols[y][x] = pickSymbol (symbols4[x-8][y-8]);
+                Symbol symbol = pickSymbol (symbols4[x-8][y-8]);
+                this.symbols[y][x] = symbol;
+                if (symbol != Symbol.NONE){
+                    symbol.setPosX(y);
+                    symbol.setPosY(x);
+                    this.symbolList.add(symbol);
+                }
             }
         }
 
@@ -146,10 +176,18 @@ public class GameBoard {
         */
 
         robots = new HashMap<Color, Robot>();
-        robots.put(RED, new Robot(RED));
-        robots.put(GREEN, new Robot(GREEN));
-        robots.put(BLUE, new Robot(BLUE));
-        robots.put(YELLOW, new Robot(YELLOW));
+        robots.put(RED, createValidRobot(RED));
+        robots.put(GREEN, createValidRobot(GREEN));
+        robots.put(BLUE, createValidRobot(BLUE));
+        robots.put(YELLOW, createValidRobot(YELLOW));
+
+        setRobotsOrigin();
+
+        // Creation de l'objectif
+
+        Random rand = new Random();
+        this.selectedSymbol = symbolList.get(rand.nextInt(this.symbolList.size()));
+
     }
 
     //Pour récupérer les symboles dans le constructeur
@@ -191,9 +229,19 @@ public class GameBoard {
     public Status getStatus(){
         return this.status;
     }
+    public int getCount() {
+        return count;
+    }
+    public Symbol getSelectedSymbol(){
+        return this.selectedSymbol;
+    }
+
     //Les setteurs
     public void setStatus(Status status){
         this.status = status;
+    }
+    public void setCount(int count) {
+        this.count = count;
     }
 
     //Les process
@@ -206,9 +254,7 @@ public class GameBoard {
     public void processDeselectRobot(){
         this.selectedRobot = null;
     }
-    public boolean checkDiagonal(int x, int y) {
-        return((this.selectedRobot.getPosX() == x) ||  (this.selectedRobot.getPosY() == y));
-    }
+
     public Cell.Direction getDirectionMouv(int x,int y){
         int dx = this.selectedRobot.getPosX() - x;
         int dy = this.selectedRobot.getPosY() - y;
@@ -282,7 +328,6 @@ public class GameBoard {
                 throw new IllegalStateException("Erreur de direction dans les colisions " );
         }
     }
-
     private boolean checkRobotNear(Cell.Direction dir){
         int x = context.getSelectedRobot().getPosX();
         int y = context.getSelectedRobot().getPosY();
@@ -318,6 +363,63 @@ public class GameBoard {
 
         }
         return false;
+    }
+
+    public void processSelectSelectedSymbol(){
+        Random rand = new Random();
+        Symbol symbol = GameBoard.context.getSelectedSymbol() ;
+        while (symbol == GameBoard.context.getSelectedSymbol() ){
+            symbol = symbolList.get(rand.nextInt(this.symbolList.size()));
+        }
+        this.selectedSymbol = symbol;
+        GameBoard.context.setStatus(CHOOSE_ROBOT);
+    }
+
+    public boolean checkDiagonal(int x, int y) {
+        return((this.selectedRobot.getPosX() == x) ||  (this.selectedRobot.getPosY() == y));
+    }
+    public boolean checkWin(){
+        return this.selectedRobot.getColor() == this.selectedSymbol.getColor()
+                && this.selectedRobot.getPosX() == this.selectedSymbol.getPosX()
+                && this.selectedRobot.getPosY() == this.selectedSymbol.getPosY();
+    }
+
+    public Robot createValidRobot(Color color){
+        int posX = 8; int posY = 8;
+        Robot robot = new Robot(color,posX,posY );
+        Random rand = new Random();
+
+        while ( (!((posX != 8 && posY != 7) || (posX != 7 && posY != 8))) && checkSuperpositionRobot(posX,posY)) {
+            posX = rand.nextInt(SIZE);
+            posY = rand.nextInt(SIZE);
+            //System.out.println(posX + " " + posY);
+        }
+        robot.setPos(posX,posY);
+
+        return robot;
+    }
+    private boolean checkSuperpositionRobot(int x, int y){
+        for (Robot robot : this.robots.values()){
+            if(robot.getPosX() == x && robot.getPosY() == y){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void setRobotsOrigin(){
+        this.robotsOrigin = new HashMap<>();
+        for(Robot robot : this.robots.values()){
+            int x = robot.getPosX();
+            int y = robot.getPosY();
+            this.robotsOrigin.put(robot,new int[]{x,y});
+        }
+    }
+    public void restoreRobotOrigin(){
+        for(Robot robot : this.robots.values()){
+            int[]pos = this.robotsOrigin.get(robot);
+            robot.setPos(pos[0],pos[1]);
+        }
     }
 
 
