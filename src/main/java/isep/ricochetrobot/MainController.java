@@ -90,11 +90,15 @@ public class MainController implements Initializable {
                 Robot robot = GameBoard.context.getSelectedRobot();
 
                 Cell.Direction dir = GameBoard.context.getDirectionMouv(x,y);
-                System.out.println(dir);
+                //System.out.println(dir);
 
-                GridPane.setConstraints(robot.getGui(), x, y);
-                robot.setPos(x,y);
-                //GameBoard.context.processDeselectRobot();
+                GameBoard.context.processDeplacement(dir);
+
+
+                GridPane.setConstraints(robot.getGui(), GameBoard.context.getSelectedRobot().getPosX(),
+                                                        GameBoard.context.getSelectedRobot().getPosY());
+                //robot.setPos(x,y);
+                //GameBoard.context.processDeplacement();
 
             }else{
                 System.out.println("Mouvement impossible");

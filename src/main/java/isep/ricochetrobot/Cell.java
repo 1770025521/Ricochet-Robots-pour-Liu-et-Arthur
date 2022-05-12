@@ -7,17 +7,18 @@ import static isep.ricochetrobot.Cell.Direction.*;
 
 public enum Cell {
 
-    NoWall(new boolean[]{false, false, false, false},null),
+    //                            UP     RIGHT  DOWN   LEFT
+    NoWall(new boolean[]{         false, false, false, false  },null),
 
-    WallUp(new boolean[]{true, false, false, false}, "WU.png"),
-    WallRight(new boolean[]{false, true, false, false},"WR.png"),
-    WallDown(new boolean[]{false, false, true, false}, "WD.png"),
-    WallLeft(new boolean[]{false, false, false, true}, "WL.png"),
+    WallUp(new boolean[]{         true,  false, false, false  }, "WU.png"),
+    WallRight(new boolean[]{      false, true,  false, false  },"WR.png"),
+    WallDown(new boolean[]{       false, false, true,  false  }, "WD.png"),
+    WallLeft(new boolean[]{       false, false, false, true   }, "WL.png"),
 
-    WallUpLeft(new boolean[]{true, false, false, true}, "WUL.png"),
-    WallUpRight(new boolean[]{false, false, false, true}, "WUR.png"),
-    WallDownLeft(new boolean[]{false, false, false, true}, "WDL.png"),
-    WallDownRight(new boolean[]{false, false, false, true}, "WDR.png");
+    WallUpLeft(new boolean[]{     true, false,  false, true   }, "WUL.png"),
+    WallUpRight(new boolean[]{    true, true,   false, false   }, "WUR.png"),
+    WallDownLeft(new boolean[]{   false, false, true,  true   }, "WDL.png"),
+    WallDownRight(new boolean[]{  false,  true, true,  false   }, "WDR.png");
 
     private Map<Direction, Boolean> block;
     private String url;

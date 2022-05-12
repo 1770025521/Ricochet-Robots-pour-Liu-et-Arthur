@@ -5,14 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="Implementation de la classe gameBoard, Robot et de l'enum Color&#10;Création et affichage des Robots">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Cell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/redPlanet.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/redPlanet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WDL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WDR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WU.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WUL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WUR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/blueMoon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bluePlanet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/blueStar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/blueSun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/blue_robot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/greenMoon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/greenPlanet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/greenStar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/greenSun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/green_robot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Cell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Color.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard$Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Robot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Symbol.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/main-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/redMoon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/redPlanet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/redStar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/redSun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/red_robot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/yellowMoon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/yellowPlanet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/yellowStar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/yellowSun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/yellow_robot.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +95,8 @@
       <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources\isep\ricochetrobot" />
+      <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur" />
       <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources" />
       <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources\wall" />
     </key>
@@ -62,7 +104,7 @@
   <component name="RunManager">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="isep.ricochetrobot.MainApplication" />
-      <module name="Ricochet-Robots-pour-Liu-et-Arthur" />
+      <module name="ricochetRobot" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="isep.ricochetrobot.*" />

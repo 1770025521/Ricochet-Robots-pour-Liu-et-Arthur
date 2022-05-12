@@ -21,7 +21,7 @@ public class Robot {
         posX = posY = 8;
         while (!((posX != 8 && posX != 7) || (posY != 7 && posY != 8))){
             setPos( rand.nextInt(GameBoard.SIZE), rand.nextInt(GameBoard.SIZE) );
-            System.out.println(posX + " " + posY);
+            //System.out.println(posX + " " + posY);
         }
 
     }

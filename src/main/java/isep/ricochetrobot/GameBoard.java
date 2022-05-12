@@ -232,24 +232,93 @@ public class GameBoard {
         }
     }
 
-    public void processCalculDeplacement(Cell.Direction dir){
+    public void processDeplacement(Cell.Direction dir){
         int x = context.getSelectedRobot().getPosX();
         int y = context.getSelectedRobot().getPosY();
 
-        if (dir == UP){
+        //System.out.println(x +" " + y);
 
-        }else if (dir == RIGHT){
-            if(GameBoard.context.getCells()[x][y] != null){
+        Cell[][] cells = GameBoard.context.getCells();
 
+        switch (dir) {
+            case UP:
+                if (!cells[x][y].getBlock().get(UP)
+                        && !cells[x][y - 1].getBlock().get(DOWN)
+                        && !this.checkRobotNear(dir)) {
+
+                    this.getSelectedRobot().setPos(x, y - 1);
+                    this.processDeplacement(dir);
+                }
+                break;
+
+            case RIGHT:
+                if (!cells[x][y].getBlock().get(RIGHT)
+                        && !cells[x + 1][y].getBlock().get(LEFT)
+                        && !this.checkRobotNear(dir)) {
+                    this.getSelectedRobot().setPos(x + 1, y);
+                    this.processDeplacement(dir);
+                }
+                break;
+            case DOWN:
+
+                if (!cells[x][y].getBlock().get(DOWN) 
+                        && !cells[x][y + 1].getBlock().get(UP) 
+                        && !this.checkRobotNear(dir)) {
+                    this.getSelectedRobot().setPos(x, y + 1);
+                    this.processDeplacement(dir);
+                }
+                break;
+
+            case LEFT:
+                if (!cells[x][y].getBlock().get(LEFT)
+                        && !cells[x - 1][y].getBlock().get(RIGHT)
+                        && !this.checkRobotNear(dir)) {
+                    this.getSelectedRobot().setPos(x - 1, y);
+                    this.processDeplacement(dir);
+                }
+                break;
+
+            default:
+                throw new IllegalStateException("Erreur de direction dans les colisions " );
+        }
+    }
+
+    private boolean checkRobotNear(Cell.Direction dir){
+        int x = context.getSelectedRobot().getPosX();
+        int y = context.getSelectedRobot().getPosY();
+
+        for (Color color : this.robots.keySet()){
+            Robot robot = this.robots.get(color);
+            if (robot != context.getSelectedRobot()){
+                switch (dir) {
+                    case UP:
+                        if (robot.getPosX() == x && robot.getPosY() == y - 1) {
+                            return true;
+                        }
+                        break;
+                    case RIGHT:
+                        if (robot.getPosX() == x + 1 && robot.getPosY() == y) {
+                            return true;
+                        }
+                        break;
+                    case DOWN:
+                        if (robot.getPosX() == x && robot.getPosY() == y + 1) {
+                            return true;
+                        }
+                        break;
+                    case LEFT:
+                        if (robot.getPosX() == x - 1 && robot.getPosY() == y) {
+                            return true;
+                        }
+                        break;
+                    default:
+                        throw new IllegalStateException("Erreur de direction dans les colisions " );
+                }
             }
-        }else if (dir == DOWN){
-
-        }else{
 
         }
-
-
-
+        return false;
     }
+
 
 }
