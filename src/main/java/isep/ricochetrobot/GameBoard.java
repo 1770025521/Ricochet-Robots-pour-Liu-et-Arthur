@@ -5,6 +5,7 @@ import java.util.Map;
 
 import static isep.ricochetrobot.Color.*;
 import static isep.ricochetrobot.GameBoard.Status.*;
+import static isep.ricochetrobot.Cell.Direction.*;
 
 public class GameBoard {
 
@@ -42,10 +43,10 @@ public class GameBoard {
             Creation du plateau de jeu à partir de 4 planches
         */
 
-        Board plate1 = Board.PLANCHE4;
-        Board plate2 = Board.PLANCHE1;
+        Board plate1 = Board.PLANCHE1;
+        Board plate2 = Board.PLANCHE2;
         Board plate3 = Board.PLANCHE3;
-        Board plate4 = Board.PLANCHE2;
+        Board plate4 = Board.PLANCHE4;
 
         int[][] cells1 = plate1.getCells();
         int[][] cells2 = util.rotateTable(plate2.getCells()) ;
@@ -198,14 +199,57 @@ public class GameBoard {
     //Les process
     public void processSelectRobot(Color color) {
         if(this.status == CHOOSE_ROBOT){
-            this.selectedRobot = this.robots.get(color);
-            setStatus(CHOOSE_TILE);
+                this.selectedRobot = this.robots.get(color);
+                setStatus(CHOOSE_TILE);
         }
     }
-    public boolean checkMovement(int x, int y) {
-        System.out.println(this.selectedRobot.getPosX());
-        System.out.println(this.selectedRobot.getPosY());
+    public void processDeselectRobot(){
+        this.selectedRobot = null;
+    }
+    public boolean checkDiagonal(int x, int y) {
         return((this.selectedRobot.getPosX() == x) ||  (this.selectedRobot.getPosY() == y));
+    }
+    public Cell.Direction getDirectionMouv(int x,int y){
+        int dx = this.selectedRobot.getPosX() - x;
+        int dy = this.selectedRobot.getPosY() - y;
+
+        if(dx!=0){
+            //deplacement sur x
+            if(dx>0){
+                return LEFT;
+            }else{
+                return RIGHT;
+            }
+
+        }else{
+            //deplacement sur y
+            if(dy>0){
+                return UP;
+            }else{
+                return DOWN;
+            }
+
+        }
+    }
+
+    public void processCalculDeplacement(Cell.Direction dir){
+        int x = context.getSelectedRobot().getPosX();
+        int y = context.getSelectedRobot().getPosY();
+
+        if (dir == UP){
+
+        }else if (dir == RIGHT){
+            if(GameBoard.context.getCells()[x][y] != null){
+
+            }
+        }else if (dir == DOWN){
+
+        }else{
+
+        }
+
+
+
     }
 
 }

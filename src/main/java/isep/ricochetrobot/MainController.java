@@ -85,11 +85,16 @@ public class MainController implements Initializable {
     private void updateSelectedRobot(int x,int y){
 
         if (GameBoard.context.getStatus() == CHOOSE_TILE){
-            System.out.println(x + " "+y);
-            if (GameBoard.context.checkMovement(x,y)){
+            //System.out.println(x + " "+y);
+            if (GameBoard.context.checkDiagonal(x,y)){
                 Robot robot = GameBoard.context.getSelectedRobot();
+
+                Cell.Direction dir = GameBoard.context.getDirectionMouv(x,y);
+                System.out.println(dir);
+
                 GridPane.setConstraints(robot.getGui(), x, y);
                 robot.setPos(x,y);
+                //GameBoard.context.processDeselectRobot();
 
             }else{
                 System.out.println("Mouvement impossible");
@@ -98,4 +103,6 @@ public class MainController implements Initializable {
         }
 
     }
+
+
 }
