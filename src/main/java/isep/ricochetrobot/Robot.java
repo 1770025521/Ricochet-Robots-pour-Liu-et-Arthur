@@ -42,6 +42,7 @@ public class Robot {
     // Composant "JFX" associé
     public void setGui(ImageView gui) { this.gui = gui; }
     public Node getGui() { return gui; }
+
     public int getPosX() {
         return posX;
     }

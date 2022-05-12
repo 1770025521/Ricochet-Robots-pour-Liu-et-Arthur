@@ -1,11 +1,10 @@
 package isep.ricochetrobot;
 
-import javafx.css.Size;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import static isep.ricochetrobot.Color.*;
+import static isep.ricochetrobot.GameBoard.Status.*;
 
 public class GameBoard {
 
@@ -15,6 +14,18 @@ public class GameBoard {
     private Symbol[][] symbols;
     private Map<Color,Robot> robots;
     public static final int SIZE = 16;
+    private Robot selectedRobot;
+
+    private Status status;
+
+    public enum Status{
+        CHOOSE_PLAYER("Cliquez sur le bouton [Jouer]"),
+        CHOOSE_ROBOT("Cliquez sur le robot à déplacer"),
+        CHOOSE_TILE("Cliquez sur la case destination");
+        Status(String toolTip) { this.toolTip = toolTip; }
+        private String toolTip;
+        public String getToolTip() { return this.toolTip; }
+    }
 
     public static void start(){
         if (GameBoard.context != null) {
@@ -22,7 +33,7 @@ public class GameBoard {
                     ("Impossible de lancer plusieurs fois la partie...");
         }
         GameBoard.context = new GameBoard();
-        //GameBoard.context.setStatus(CHOOSE_PLAYER);
+        GameBoard.context.setStatus(CHOOSE_ROBOT);
     }
 
     private GameBoard(){
@@ -173,4 +184,28 @@ public class GameBoard {
     public Map<Color, Robot> getRobots(){
         return this.robots;
     }
+    public Robot getSelectedRobot(){
+        return this.selectedRobot;
+    }
+    public Status getStatus(){
+        return this.status;
+    }
+    //Les setteurs
+    public void setStatus(Status status){
+        this.status = status;
+    }
+
+    //Les process
+    public void processSelectRobot(Color color) {
+        if(this.status == CHOOSE_ROBOT){
+            this.selectedRobot = this.robots.get(color);
+            setStatus(CHOOSE_TILE);
+        }
+    }
+    public boolean checkMovement(int x, int y) {
+        System.out.println(this.selectedRobot.getPosX());
+        System.out.println(this.selectedRobot.getPosY());
+        return((this.selectedRobot.getPosX() == x) ||  (this.selectedRobot.getPosY() == y));
+    }
+
 }

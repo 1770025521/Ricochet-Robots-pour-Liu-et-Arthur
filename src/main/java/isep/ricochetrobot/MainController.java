@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static isep.ricochetrobot.Color.*;
+import static isep.ricochetrobot.GameBoard.Status.*;
 
 public class MainController implements Initializable {
     @FXML
@@ -53,6 +54,10 @@ public class MainController implements Initializable {
                     tileGui.getChildren().add(tileSymbol);
                 }
 
+                int finalX = x;
+                int finalY = y;
+                tileGui.setOnMouseClicked(event -> updateSelectedRobot(finalX, finalY));
+
                 gameGrid.add(tileGui, x, y);
 
             }
@@ -70,10 +75,27 @@ public class MainController implements Initializable {
     private void addRobot(Color color) {
         Robot robot = GameBoard.context.getRobots().get(color);
         ImageView robotGui = new ImageView( new Image(robot.getUrl(),50,50, false, true) );
-        //robotGui.setOnMouseClicked
-        //        (event -> GameBoard.context.processSelectRobot(color));
+        //Event Selection Robot
+        robotGui.setOnMouseClicked (event -> GameBoard.context.processSelectRobot(color));
         gameGrid.add(robotGui, robot.getPosX(), robot.getPosY());
         // Association de l' "ImageView" avec le robot stocké dans le jeu
         robot.setGui(robotGui);
+    }
+
+    private void updateSelectedRobot(int x,int y){
+
+        if (GameBoard.context.getStatus() == CHOOSE_TILE){
+            System.out.println(x + " "+y);
+            if (GameBoard.context.checkMovement(x,y)){
+                Robot robot = GameBoard.context.getSelectedRobot();
+                GridPane.setConstraints(robot.getGui(), x, y);
+                robot.setPos(x,y);
+
+            }else{
+                System.out.println("Mouvement impossible");
+            }
+            GameBoard.context.setStatus(CHOOSE_ROBOT);
+        }
+
     }
 }

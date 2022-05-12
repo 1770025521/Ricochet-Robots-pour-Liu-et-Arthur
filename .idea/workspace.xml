@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="Implementation de la formation du GameBoard&#10;à base de 4 board&#10;Wall + Symbole">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/blue_robot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/green_robot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/red_robot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/yellow_robot.png" afterDir="false" />
+    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Symbol.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Symbol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/isep/ricochetrobot/Robot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +55,7 @@
       <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources" />
       <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources\wall" />
     </key>
   </component>
@@ -114,7 +109,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652227798505</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implementation de la classe gameBoard, Robot et de l'enum Color&#10;Création et affichage des Robots">
+      <created>1652310091661</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652310091661</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implementation de la classe gameBoard, Robot et de l'enum Color&#10;Création et affichage des Robots">
+      <created>1652310134488</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652310134488</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -131,6 +140,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="continuation du dernier stade" />
     <MESSAGE value="Implementation de la formation du GameBoard&#10;à base de 4 board&#10;Wall + Symbole" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation de la formation du GameBoard&#10;à base de 4 board&#10;Wall + Symbole" />
+    <MESSAGE value="Implementation de la classe gameBoard, Robot et de l'enum Color&#10;Création et affichage des Robots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation de la classe gameBoard, Robot et de l'enum Color&#10;Création et affichage des Robots" />
   </component>
 </project>
