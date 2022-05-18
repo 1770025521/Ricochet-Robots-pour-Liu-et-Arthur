@@ -9,14 +9,15 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        GameBoard.start();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+        //GameBoard.start();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("boardSelection-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Main");
         stage.setScene(scene);
         stage.show();
 
     }
+
 
     public  static void main(String[] args ) {
         launch();

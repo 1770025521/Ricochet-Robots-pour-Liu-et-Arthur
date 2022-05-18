@@ -14,7 +14,7 @@
       <Label fx:id="text1" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" text="Nombre de coup" textAlignment="CENTER" />
       <Label fx:id="textCount" alignment="CENTER" layoutX="200.0" prefHeight="50.0" prefWidth="200.0" text="0" textAlignment="CENTER" />
       <Label fx:id="text2" alignment="CENTER" layoutX="400.0" prefHeight="50.0" prefWidth="200.0" text="Timer" textAlignment="CENTER" />
-      <Label fx:id="textTimer" alignment="CENTER" layoutX="600.0" prefHeight="50.0" prefWidth="200.0" text="120s" textAlignment="CENTER" />
+      <Label fx:id="textTimer" alignment="CENTER" layoutX="600.0" prefHeight="50.0" prefWidth="200.0" text="60s" textAlignment="CENTER" />
 
       <GridPane fx:id="gameGrid" gridLinesVisible="true" layoutX="0.0" layoutY="50.0" prefHeight="600.0" prefWidth="600.0" styleClass="gameGrid">
          <columnConstraints>

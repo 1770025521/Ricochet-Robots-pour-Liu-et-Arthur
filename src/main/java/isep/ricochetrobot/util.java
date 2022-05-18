@@ -18,15 +18,6 @@ public class util {
         return table;
     }
 
-    public static void printTable(int[][] table){
-        int N = table.length;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++)
-                System.out.print(" " + table[i][j]);
-            System.out.print("\n");
-        }
-        System.out.print("\n");
-    }
 
 }
 

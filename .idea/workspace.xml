@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="Ajout des collisions">
+    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="Ajout des objectifs et du reset &#10;correction apparition des robots">
+      <change afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/BoardSelectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/boardSelection-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -54,7 +58,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/isep/ricochetrobot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ricochet_robot-main" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -138,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652364518724</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ajout des objectifs et du reset &#10;correction apparition des robots">
+      <created>1652398224712</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652398224712</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,17 +169,7 @@
     <MESSAGE value="Implementation de la formation du GameBoard&#10;à base de 4 board&#10;Wall + Symbole" />
     <MESSAGE value="Implementation de la classe gameBoard, Robot et de l'enum Color&#10;Création et affichage des Robots" />
     <MESSAGE value="Ajout des collisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des collisions" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java</url>
-          <line>235</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Ajout des objectifs et du reset &#10;correction apparition des robots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des objectifs et du reset &#10;correction apparition des robots" />
   </component>
 </project>

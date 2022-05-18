@@ -1,5 +1,7 @@
 package isep.ricochetrobot;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -9,8 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
-import java.lang.annotation.Target;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,8 +43,13 @@ public class MainController implements Initializable {
     Cell [][] board = GameBoard.context.getCells();
     Symbol[][] symbols = GameBoard.context.getSymbols();
 
+    Timeline timeline;
+    int time  = 60;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        launchTimer();
 
         this.newTargetButton.setOnAction(event -> {
             resetRobot();
@@ -127,6 +135,7 @@ public class MainController implements Initializable {
 
                 if (GameBoard.context.checkWin()){
                     this.showWarning("Vous avez gagné en " + GameBoard.context.getCount() + " coups");
+                    this.setCount(0);
                     this.newTarget();
                 }
 
@@ -140,9 +149,7 @@ public class MainController implements Initializable {
 
     private void setCount(int count){
         GameBoard.context.setCount(count);
-        StringBuilder sb = new StringBuilder();
-        sb.append(count);
-        this.textCount.setText(sb.toString());
+        this.textCount.setText(String.valueOf(count));
 
     }
 
@@ -167,6 +174,8 @@ public class MainController implements Initializable {
         GameBoard.context.processSelectSelectedSymbol();
         this.showTarget();
         GameBoard.context.setRobotsOrigin();
+        this.time = 60;
+        this.launchTimer();
     }
 
     private void resetRobot(){
@@ -177,5 +186,14 @@ public class MainController implements Initializable {
         this.setCount(0);
     }
 
+    private void launchTimer(){
+        this.timeline = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
+            this.time--;
+            this.textTimer.setText(time+"s");
+            }));
+        this.timeline.setCycleCount(60);
+        this.timeline.play();
+    }
 
-}
+
+    }

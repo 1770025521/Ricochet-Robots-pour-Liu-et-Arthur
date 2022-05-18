@@ -27,20 +27,20 @@ public class GameBoard {
         CHOOSE_ROBOT("Cliquez sur le robot à déplacer"),
         CHOOSE_TILE("Cliquez sur la case destination");
         Status(String toolTip) { this.toolTip = toolTip; }
-        private String toolTip;
+        private final String toolTip;
         public String getToolTip() { return this.toolTip; }
     }
 
-    public static void start(){
+    public static void start(Board[] boards){
         if (GameBoard.context != null) {
             throw new RuntimeException
                     ("Impossible de lancer plusieurs fois la partie...");
         }
-        GameBoard.context = new GameBoard();
+        GameBoard.context = new GameBoard(boards);
         GameBoard.context.setStatus(CHOOSE_ROBOT);
     }
 
-    private GameBoard(){
+    private GameBoard(Board[]boards){
 
         count = 0;
 
@@ -48,10 +48,10 @@ public class GameBoard {
             Creation du plateau de jeu à partir de 4 planches
         */
 
-        Board plate1 = Board.PLANCHE1;
-        Board plate2 = Board.PLANCHE2;
-        Board plate3 = Board.PLANCHE3;
-        Board plate4 = Board.PLANCHE4;
+        Board plate1 = boards[0];
+        Board plate2 = boards[1];
+        Board plate3 = boards[2];
+        Board plate4 = boards[3];
 
         int[][] cells1 = plate1.getCells();
         int[][] cells2 = util.rotateTable(plate2.getCells()) ;
