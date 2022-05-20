@@ -44,7 +44,8 @@ public class MainController implements Initializable {
     Symbol[][] symbols = GameBoard.context.getSymbols();
 
     Timeline timeline;
-    int time  = 60;
+    final int roundTime = 60;
+    int time  = roundTime;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -135,7 +136,6 @@ public class MainController implements Initializable {
 
                 if (GameBoard.context.checkWin()){
                     this.showWarning("Vous avez gagné en " + GameBoard.context.getCount() + " coups");
-                    this.setCount(0);
                     this.newTarget();
                 }
 
@@ -171,11 +171,13 @@ public class MainController implements Initializable {
     }
 
     private void newTarget(){
+        this.setCount(0);
+        this.time = this.roundTime;
+        this.textTimer.setText(this.time+"s");
         GameBoard.context.processSelectSelectedSymbol();
         this.showTarget();
         GameBoard.context.setRobotsOrigin();
-        this.time = 60;
-        this.launchTimer();
+
     }
 
     private void resetRobot(){
@@ -187,12 +189,20 @@ public class MainController implements Initializable {
     }
 
     private void launchTimer(){
+        this.time = this.roundTime;
+        this.textTimer.setText(this.time+"s");
         this.timeline = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
-            this.time--;
-            this.textTimer.setText(time+"s");
+            if(this.time>0){
+                this.time--;
+                this.textTimer.setText(time+"s");
+            }else{
+                this.resetRobot();
+                this.newTarget();
+            }
             }));
-        this.timeline.setCycleCount(60);
+        this.timeline.setCycleCount(Timeline.INDEFINITE);
         this.timeline.play();
+
     }
 
 

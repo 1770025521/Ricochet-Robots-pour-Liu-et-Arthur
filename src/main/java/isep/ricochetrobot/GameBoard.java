@@ -25,7 +25,8 @@ public class GameBoard {
     public enum Status{
         CHOOSE_PLAYER("Cliquez sur le bouton [Jouer]"),
         CHOOSE_ROBOT("Cliquez sur le robot à déplacer"),
-        CHOOSE_TILE("Cliquez sur la case destination");
+        CHOOSE_TILE("Cliquez sur la case destination"),
+        END_TIMER("");
         Status(String toolTip) { this.toolTip = toolTip; }
         private final String toolTip;
         public String getToolTip() { return this.toolTip; }
@@ -379,9 +380,10 @@ public class GameBoard {
         return((this.selectedRobot.getPosX() == x) ||  (this.selectedRobot.getPosY() == y));
     }
     public boolean checkWin(){
+        int rx = this.selectedRobot.getPosX();
+        int ry = this.selectedRobot.getPosY();
         return this.selectedRobot.getColor() == this.selectedSymbol.getColor()
-                && this.selectedRobot.getPosX() == this.selectedSymbol.getPosX()
-                && this.selectedRobot.getPosY() == this.selectedSymbol.getPosY();
+                && this.symbols[rx][ry] == this.selectedSymbol;
     }
 
     public Robot createValidRobot(Color color){

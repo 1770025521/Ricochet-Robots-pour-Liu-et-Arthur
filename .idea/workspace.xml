@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="Ajout des objectifs et du reset &#10;correction apparition des robots">
-      <change afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/BoardSelectionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/boardSelection-view.fxml" afterDir="false" />
+    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="Ajout du menu de selection des planches&#10;fix du setCount() quand on gagne">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652398224712</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Ajout du menu de selection des planches&#10;fix du setCount() quand on gagne">
+      <created>1652918390084</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652918390084</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +174,7 @@
     <MESSAGE value="Implementation de la classe gameBoard, Robot et de l'enum Color&#10;Création et affichage des Robots" />
     <MESSAGE value="Ajout des collisions" />
     <MESSAGE value="Ajout des objectifs et du reset &#10;correction apparition des robots" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout des objectifs et du reset &#10;correction apparition des robots" />
+    <MESSAGE value="Ajout du menu de selection des planches&#10;fix du setCount() quand on gagne" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout du menu de selection des planches&#10;fix du setCount() quand on gagne" />
   </component>
 </project>
