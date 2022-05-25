@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -134,6 +135,10 @@ public class MainController implements Initializable {
 
                 this.setCount(GameBoard.context.getCount()+1);
 
+                Glow glow = new Glow();
+                glow.setLevel(0);
+                GameBoard.context.getSelectedRobot().getGui().setEffect(glow);
+
                 if (GameBoard.context.checkWin()){
                     this.showWarning("Vous avez gagné en " + GameBoard.context.getCount() + " coups");
                     this.newTarget();
@@ -181,11 +186,15 @@ public class MainController implements Initializable {
     }
 
     private void resetRobot(){
+        Glow glow = new Glow();
+        glow.setLevel(0);
+        GameBoard.context.getSelectedRobot().getGui().setEffect(glow);
         GameBoard.context.restoreRobotOrigin();
         for(Robot robot : GameBoard.context.getRobots().values()){
             GridPane.setConstraints(robot.getGui(),robot.getPosX(),robot.getPosY());
         }
         this.setCount(0);
+        GameBoard.context.setStatus(CHOOSE_ROBOT);
     }
 
     private void launchTimer(){

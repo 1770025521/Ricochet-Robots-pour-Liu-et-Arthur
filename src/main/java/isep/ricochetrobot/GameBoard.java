@@ -1,5 +1,7 @@
 package isep.ricochetrobot;
 
+import javafx.scene.effect.Glow;
+
 import java.util.*;
 
 import static isep.ricochetrobot.Color.*;
@@ -231,7 +233,7 @@ public class GameBoard {
         return this.status;
     }
     public int getCount() {
-        return count;
+        return this.count;
     }
     public Symbol getSelectedSymbol(){
         return this.selectedSymbol;
@@ -249,9 +251,13 @@ public class GameBoard {
     public void processSelectRobot(Color color) {
         if(this.status == CHOOSE_ROBOT){
                 this.selectedRobot = this.robots.get(color);
+                Glow glow = new Glow();
+                glow.setLevel(1);
+                this.selectedRobot.getGui().setEffect(glow);
                 setStatus(CHOOSE_TILE);
         }
     }
+
     public void processDeselectRobot(){
         this.selectedRobot = null;
     }
@@ -306,8 +312,8 @@ public class GameBoard {
                     this.processDeplacement(dir);
                 }
                 break;
-            case DOWN:
 
+            case DOWN:
                 if (!cells[x][y].getBlock().get(DOWN) 
                         && !cells[x][y + 1].getBlock().get(UP) 
                         && !this.checkRobotNear(dir)) {
@@ -329,6 +335,7 @@ public class GameBoard {
                 throw new IllegalStateException("Erreur de direction dans les colisions " );
         }
     }
+
     private boolean checkRobotNear(Cell.Direction dir){
         int x = context.getSelectedRobot().getPosX();
         int y = context.getSelectedRobot().getPosY();
@@ -361,7 +368,6 @@ public class GameBoard {
                         throw new IllegalStateException("Erreur de direction dans les colisions " );
                 }
             }
-
         }
         return false;
     }
@@ -379,6 +385,7 @@ public class GameBoard {
     public boolean checkDiagonal(int x, int y) {
         return((this.selectedRobot.getPosX() == x) ||  (this.selectedRobot.getPosY() == y));
     }
+
     public boolean checkWin(){
         int rx = this.selectedRobot.getPosX();
         int ry = this.selectedRobot.getPosY();
@@ -400,6 +407,7 @@ public class GameBoard {
 
         return robot;
     }
+
     private boolean checkSuperpositionRobot(int x, int y){
         for (Robot robot : this.robots.values()){
             if(robot.getPosX() == x && robot.getPosY() == y){
@@ -417,6 +425,7 @@ public class GameBoard {
             this.robotsOrigin.put(robot,new int[]{x,y});
         }
     }
+
     public void restoreRobotOrigin(){
         for(Robot robot : this.robots.values()){
             int[]pos = this.robotsOrigin.get(robot);
