@@ -4,15 +4,19 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.ColorInput;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+
 
 
 import java.net.URL;
@@ -45,7 +49,7 @@ public class MainController implements Initializable {
     Symbol[][] symbols = GameBoard.context.getSymbols();
 
     Timeline timeline;
-    final int roundTime = 60;
+    final int roundTime = 60*60;
     int time  = roundTime;
 
     @Override
