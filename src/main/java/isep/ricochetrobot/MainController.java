@@ -45,6 +45,9 @@ public class MainController implements Initializable {
     @FXML
     private Button IAButton;
 
+    @FXML
+    private Label iaOutput;
+
     Cell [][] board = GameBoard.context.getCells();
     Symbol[][] symbols = GameBoard.context.getSymbols();
 
@@ -66,6 +69,11 @@ public class MainController implements Initializable {
 
         this.IAButton.setOnAction(event -> {
             ia.run();
+            String text = "Resolution en " + (ia.getSolution().size()) +" coups\n";
+            for (Deplacement d:this.ia.getSolution()){
+                text = text + d + "\n";
+            }
+            iaOutput.setText(text);
         });
 
         this.resetButton.setOnAction(event -> resetRobot());
@@ -196,6 +204,7 @@ public class MainController implements Initializable {
     }
 
     private void resetRobot(){
+        this.iaOutput.setText("");
         if (GameBoard.context.getSelectedRobot() != null){
             Glow glow = new Glow();
             glow.setLevel(0);

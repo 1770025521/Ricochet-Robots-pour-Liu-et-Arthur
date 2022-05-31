@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isep.ricochetrobot.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isep.ricochetrobot.MainController">
    <children>
 
       <Label fx:id="text1" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" text="Nombre de coup" textAlignment="CENTER" />
@@ -61,6 +61,7 @@
       <Button fx:id="resetButton" layoutY="850.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="266.0" text="Reset" />
       <Button fx:id="newTargetButton" layoutX="267.0" layoutY="850.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="266.0" text="New Target" />
       <Button fx:id="IAButton" layoutX="533.0" layoutY="850.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="266.0" text="IA" />
+      <Label fx:id="iaOutput" layoutX="834.0" layoutY="242.0" prefHeight="415.0" prefWidth="133.0" textAlignment="CENTER" />
 
 
    </children>

@@ -104,4 +104,8 @@ public class IA {
         return id;
     }
 
+    public List<Deplacement> getSolution(){
+        return this.solution;
+    }
+
 }
