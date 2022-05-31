@@ -19,7 +19,13 @@ public class Robot {
         this.url = color.name() + "_robot.png";
         this.posX = posX;
         this.posY = posY;
+    }
 
+    //Constructeur pour copie
+    public Robot(Robot rb){
+        this.color = rb.color;
+        this.posX  = rb.posX;
+        this.posY  = rb.posY;
     }
 
     public void setPos(int x, int y){

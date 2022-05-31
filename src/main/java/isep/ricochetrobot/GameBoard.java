@@ -188,6 +188,21 @@ public class GameBoard {
 
     }
 
+    //Constructeur pour le copie
+    public GameBoard(GameBoard gb){
+        //this.cells = gb.getCells();
+        this.robots = new HashMap<>();
+
+        for(Color color:gb.getRobots().keySet()){
+            this.robots.put(color,new Robot(gb.getRobots().get(color)));
+        }
+
+        //this.robots.putAll(gb.getRobots());
+        this.selectedSymbol = gb.selectedSymbol;
+        this.previousMove = new ArrayList<>();
+        this.previousMove.addAll(gb.previousMove);
+    }
+
     //Pour récupérer les symboles dans le constructeur
     public Symbol pickSymbol(int id){
         return switch (id){
@@ -284,8 +299,8 @@ public class GameBoard {
     }
 
     public void processDeplacement(Cell.Direction dir){
-        int x = context.getSelectedRobot().getPosX();
-        int y = context.getSelectedRobot().getPosY();
+        int x = this.getSelectedRobot().getPosX();
+        int y = this.getSelectedRobot().getPosY();
 
         //System.out.println(x +" " + y);
 
@@ -335,8 +350,8 @@ public class GameBoard {
     }
 
     private boolean checkRobotNear(Cell.Direction dir){
-        int x = context.getSelectedRobot().getPosX();
-        int y = context.getSelectedRobot().getPosY();
+        int x = this.getSelectedRobot().getPosX();
+        int y = this.getSelectedRobot().getPosY();
 
         for (Color color : this.robots.keySet()){
             Robot robot = this.robots.get(color);
@@ -387,8 +402,8 @@ public class GameBoard {
     public boolean checkWin(){
         int rx = this.selectedRobot.getPosX();
         int ry = this.selectedRobot.getPosY();
-        return this.selectedRobot.getColor() == this.selectedSymbol.getColor()
-                && this.symbols[rx][ry] == this.selectedSymbol;
+        return this.selectedRobot.getColor() == context.selectedSymbol.getColor()
+                && context.symbols[rx][ry] == context.selectedSymbol;
     }
 
     public Robot createValidRobot(Color color){
