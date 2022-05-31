@@ -5,7 +5,7 @@ import javafx.scene.effect.Glow;
 import java.util.*;
 
 import static isep.ricochetrobot.Color.*;
-import static isep.ricochetrobot.GameBoard.Status.*;
+import static isep.ricochetrobot.Status.*;
 import static isep.ricochetrobot.Cell.Direction.*;
 
 public class GameBoard {
@@ -22,17 +22,9 @@ public class GameBoard {
     private Symbol selectedSymbol;
     private int count;
 
-    private Status status;
+    private List<Deplacement> previousMove; //Uniquement Utiliser par l'IA
 
-    public enum Status{
-        CHOOSE_PLAYER("Cliquez sur le bouton [Jouer]"),
-        CHOOSE_ROBOT("Cliquez sur le robot à déplacer"),
-        CHOOSE_TILE("Cliquez sur la case destination"),
-        END_TIMER("");
-        Status(String toolTip) { this.toolTip = toolTip; }
-        private final String toolTip;
-        public String getToolTip() { return this.toolTip; }
-    }
+    private Status status;
 
     public static void start(Board[] boards){
         if (GameBoard.context != null) {
@@ -41,11 +33,14 @@ public class GameBoard {
         }
         GameBoard.context = new GameBoard(boards);
         GameBoard.context.setStatus(CHOOSE_ROBOT);
+
+
     }
 
     private GameBoard(Board[]boards){
 
         count = 0;
+        previousMove = new ArrayList<>();
 
         /*
             Creation du plateau de jeu à partir de 4 planches
@@ -238,6 +233,9 @@ public class GameBoard {
     public Symbol getSelectedSymbol(){
         return this.selectedSymbol;
     }
+    public List<Deplacement> getPreviousMove(){
+        return this.previousMove;
+    }
 
     //Les setteurs
     public void setStatus(Status status){
@@ -424,6 +422,9 @@ public class GameBoard {
             int y = robot.getPosY();
             this.robotsOrigin.put(robot,new int[]{x,y});
         }
+    }
+    public void setSelectedRobot(Color color){
+        this.selectedRobot = this.robots.get(color);
     }
 
     public void restoreRobotOrigin(){

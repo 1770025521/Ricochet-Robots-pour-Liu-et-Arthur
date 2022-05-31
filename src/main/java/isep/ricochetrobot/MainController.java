@@ -4,12 +4,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.ColorInput;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,7 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static isep.ricochetrobot.Color.*;
-import static isep.ricochetrobot.GameBoard.Status.*;
+import static isep.ricochetrobot.Status.*;
 
 public class MainController implements Initializable {
 
@@ -45,12 +42,17 @@ public class MainController implements Initializable {
     @FXML
     private Button  newTargetButton;
 
+    @FXML
+    private Button IAButton;
+
     Cell [][] board = GameBoard.context.getCells();
     Symbol[][] symbols = GameBoard.context.getSymbols();
 
     Timeline timeline;
     final int roundTime = 60*60;
     int time  = roundTime;
+
+    IA ia = new IA();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,6 +63,10 @@ public class MainController implements Initializable {
             resetRobot();
             this.newTarget();
         } );
+
+        this.IAButton.setOnAction(event -> {
+            ia.run();
+        });
 
         this.resetButton.setOnAction(event -> resetRobot());
 
@@ -190,15 +196,18 @@ public class MainController implements Initializable {
     }
 
     private void resetRobot(){
-        Glow glow = new Glow();
-        glow.setLevel(0);
-        GameBoard.context.getSelectedRobot().getGui().setEffect(glow);
-        GameBoard.context.restoreRobotOrigin();
-        for(Robot robot : GameBoard.context.getRobots().values()){
-            GridPane.setConstraints(robot.getGui(),robot.getPosX(),robot.getPosY());
+        if (GameBoard.context.getSelectedRobot() != null){
+            Glow glow = new Glow();
+            glow.setLevel(0);
+            GameBoard.context.getSelectedRobot().getGui().setEffect(glow);
+            GameBoard.context.restoreRobotOrigin();
+            for(Robot robot : GameBoard.context.getRobots().values()){
+                GridPane.setConstraints(robot.getGui(),robot.getPosX(),robot.getPosY());
+            }
+            this.setCount(0);
+            GameBoard.context.setStatus(CHOOSE_ROBOT);
         }
-        this.setCount(0);
-        GameBoard.context.setStatus(CHOOSE_ROBOT);
+
     }
 
     private void launchTimer(){
