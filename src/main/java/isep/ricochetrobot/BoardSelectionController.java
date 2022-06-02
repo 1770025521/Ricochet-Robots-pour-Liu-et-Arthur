@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,6 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+/**
+ * Controleur qui permet de choisir les parametres de la partie
+ */
 public class BoardSelectionController implements Initializable {
 
     @FXML
@@ -29,6 +30,8 @@ public class BoardSelectionController implements Initializable {
     private ChoiceBox<String> selector3;
     @FXML
     private ChoiceBox<String> selector4;
+    @FXML
+    private TextField selectorTime;
 
     private final Board[] boards = Board.values();
     private Board[] selectedBoards;
@@ -68,7 +71,9 @@ public class BoardSelectionController implements Initializable {
                 recupBoard.get(selector4.getValue())
         };
 
-        GameBoard.start(selectedBoards);
+        int time = Integer.parseInt(this.selectorTime.getText());
+
+        GameBoard.start(selectedBoards,time);
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = null;

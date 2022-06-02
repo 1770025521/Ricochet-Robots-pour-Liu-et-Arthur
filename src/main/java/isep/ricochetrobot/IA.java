@@ -5,9 +5,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
 
-import static isep.ricochetrobot.Cell.Direction;
-import static isep.ricochetrobot.Cell.Direction.*;
 
+import static isep.ricochetrobot.Direction.*;
+
+/**
+ * Classe qui gere l'Itelligence artificielle
+ */
 public class IA {
     //private List graphList;
     private Color mainRobotColor;
@@ -21,6 +24,9 @@ public class IA {
 
     }
 
+    /**
+     * Lance le processus de détection de solution
+     */
     public void run(){
         this.gameBoardsToTest = new ArrayList<>();
         this.gameBoardsToTestTemp = new ArrayList<>();
@@ -32,21 +38,18 @@ public class IA {
         this.mainRobotColor=c.getSelectedSymbol().getColor();
         this.win = false;
 
-        this.makeTheMove();
+        //this.makeTheMove();
 
         while (!win){
         //showGameBoardsToTest();
 
         this.makeTheMove();
-
+        System.out.println(this.gameBoardsToTest.size());
         }
 
-
-        if (this.win){
-            System.out.println("Ya win");
-            for (Deplacement d:this.solution){
-                System.out.println(d);
-            }
+        System.out.println("Ya win");
+        for (Deplacement d:this.solution){
+            System.out.println(d);
         }
     }
 
@@ -104,6 +107,10 @@ public class IA {
         return id;
     }
 
+    /**
+     * Recupere la liste des deplacement de la solution
+     * @return la liste des deplacement de la solution
+     */
     public List<Deplacement> getSolution(){
         return this.solution;
     }

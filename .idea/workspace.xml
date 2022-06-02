@@ -4,12 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="Ajout du menu de selection des planches&#10;fix du setCount() quand on gagne">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="acc5bb50-2fab-43fa-bb9c-533fdd21dccf" name="Changes" comment="output dans l'interface graphique">
+      <change afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/BoardSelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/BoardSelectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Deplacement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Deplacement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/IA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/IA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isep/ricochetrobot/util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/boardSelection-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/boardSelection-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/isep/ricochetrobot/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +40,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -52,12 +70,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/isep/ricochetrobot" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ricochet_robot-main" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/Arthur/Desktop/Ricochet-Robots-pour-Liu-et-Arthur - Copie"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources" />
@@ -69,10 +86,10 @@
       <recent name="C:\Users\Arthur\Desktop\Ricochet-Robots-pour-Liu-et-Arthur\src\main\resources\wall" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainApplication">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="isep.ricochetrobot.MainApplication" />
-      <module name="ricochetRobot" />
+      <module name="Ricochet-Robots-pour-Liu-et-Arthur" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="isep.ricochetrobot.*" />
@@ -83,8 +100,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in Ricochet-Robots-pour-Liu-et-Arthur" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Ricochet-Robots-pour-Liu-et-Arthur" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainApplication" />
+        <item itemvalue="JUnit.All in Ricochet-Robots-pour-Liu-et-Arthur" />
         <item itemvalue="Application.MainApplication" />
       </list>
     </recent_temporary>

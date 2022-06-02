@@ -6,37 +6,54 @@ import java.util.*;
 
 import static isep.ricochetrobot.Color.*;
 import static isep.ricochetrobot.Status.*;
-import static isep.ricochetrobot.Cell.Direction.*;
+import static isep.ricochetrobot.Direction.*;
 
+/**
+ * Classe qui represente le plateau de jeu
+ */
 public class GameBoard {
-
     static GameBoard context;
-
     private Cell[][] cells;
     private Symbol[][] symbols;
     private Map<Color,Robot> robots;
     private Map<Robot,int[]> robotsOrigin;
     private List<Symbol> symbolList;
-    public static final int SIZE = 16;
     private Robot selectedRobot;
     private Symbol selectedSymbol;
     private int count;
+    private int time;
 
-    private List<Deplacement> previousMove; //Uniquement Utiliser par l'IA
+    private final List<Deplacement> previousMove; //Uniquement Utiliser par l'IA
 
     private Status status;
 
-    public static void start(Board[] boards){
+    /**
+     * Lance le jeu
+     * Verifie que le je n'est pas deja lance
+     * Stoque le nouveau plateau dans la variable static GameBoard.context
+     * Cette variable sera utiliser pour interagir avec le plateau
+     * @param boards Un tableau de 4 Board qui forment le plateau final
+     * @param time   Le temps entre deux tours
+     */
+    public static void start(Board[] boards, int time){
         if (GameBoard.context != null) {
             throw new RuntimeException
                     ("Impossible de lancer plusieurs fois la partie...");
         }
         GameBoard.context = new GameBoard(boards);
         GameBoard.context.setStatus(CHOOSE_ROBOT);
-
+        GameBoard.context.setTime(time);
 
     }
 
+    /**
+     * Constructeur prive de la classe Gameboard
+     * Utilisé dans la fonction start
+     * S'occupe d'innitialise toute les variables du jeu
+     * Fait la rotation des Board pour former le plateau
+     * Cree les Robots
+     * @param boards Le tableau des 4 Board qui forment le plateau final
+     */
     private GameBoard(Board[]boards){
 
         count = 0;
@@ -188,7 +205,11 @@ public class GameBoard {
 
     }
 
-    //Constructeur pour le copie
+    /**
+     * Constructeur public pour creer une copie du plateau
+     * Pour seulement creer un nouveau plateau, utiliser la fonction start()
+     * @param gb le plateau que l'on veut copier
+     */
     public GameBoard(GameBoard gb){
         //this.cells = gb.getCells();
         this.robots = new HashMap<>();
@@ -204,6 +225,12 @@ public class GameBoard {
     }
 
     //Pour récupérer les symboles dans le constructeur
+
+    /**
+     * Permet de retrouver un Sybole a partir de son id
+     * @param id l'id du Symbol
+     * @return le Symbol corespondant a l'id
+     */
     public Symbol pickSymbol(int id){
         return switch (id){
             case 1 -> Symbol.YELLOWMOON;
@@ -227,40 +254,88 @@ public class GameBoard {
     }
 
     //Les getteurs
+    /**
+     * Recupere le tableau des murs
+     * @return le tableau des murs
+     */
     public Cell[][] getCells(){
         return this.cells;
     }
+    /**
+     * Recupere le tableau des Symbol
+     * @return le tableau des Symbol
+     */
     public Symbol[][] getSymbols(){
         return this.symbols;
     }
+    /**
+     * Recupere la hashMap des robots
+     * @return la hashMap des robots
+     */
     public Map<Color, Robot> getRobots(){
         return this.robots;
     }
+    /**
+     * Recupere le Robot selectione
+     * @return le Robot selectione
+     */
     public Robot getSelectedRobot(){
         return this.selectedRobot;
     }
+    /**
+     * Recupere le Status du jeu
+     * @return le Status du jeu
+     */
     public Status getStatus(){
         return this.status;
     }
+    /**
+     * Recupere le nombre de coup du mouvement actuel
+     * @return le nombre de coup
+     */
     public int getCount() {
         return this.count;
     }
+    /**
+     * Recupere le Symbol selectione
+     * @return le Symbol selectione
+     */
     public Symbol getSelectedSymbol(){
         return this.selectedSymbol;
     }
+
+    /**
+     * Recupere la liste des coups deja effectue
+     * @return la liste des coups deja effectue
+     */
     public List<Deplacement> getPreviousMove(){
         return this.previousMove;
     }
 
     //Les setteurs
+
+    /**
+     * Change le Status du jeu
+     * @param status le nouveau status du jeu
+     */
     public void setStatus(Status status){
         this.status = status;
     }
+    /**
+     * Change le nombre de coup effectue
+     * @param count le nombre de coup
+     */
     public void setCount(int count) {
         this.count = count;
     }
 
     //Les process
+
+    /**
+     * Selectionne un robot du plateau
+     * Lui ajoute un effet glowing
+     * @param color la couleur du Robot que l'on veut selectioner
+     */
     public void processSelectRobot(Color color) {
         if(this.status == CHOOSE_ROBOT){
                 this.selectedRobot = this.robots.get(color);
@@ -271,11 +346,22 @@ public class GameBoard {
         }
     }
 
+    /**
+     * Deselectionne les Robots
+     */
     public void processDeselectRobot(){
         this.selectedRobot = null;
     }
 
-    public Cell.Direction getDirectionMouv(int x,int y){
+    /**
+     * Determine la direction du mouvement d'un robot
+     * Compare la position du robot selectione avec une position qui donne la direction
+     * Les deplacement en diagonale sont interdits
+     * @param x la position x ou le joueur veut deplacer le robot
+     * @param y la position y ou le joueur veut deplacer le robot
+     * @return la Direction du Robot
+     */
+    public Direction getDirectionMouv(int x,int y){
         int dx = this.selectedRobot.getPosX() - x;
         int dy = this.selectedRobot.getPosY() - y;
 
@@ -298,7 +384,12 @@ public class GameBoard {
         }
     }
 
-    public void processDeplacement(Cell.Direction dir){
+    /**
+     * Deplace le Robot selectioner dans la direction donne
+     * Le robot s'arrete quand il atteint un mur ou un autre Robot
+     * @param dir la direction du deplacement voulu
+     */
+    public void processDeplacement(Direction dir){
         int x = this.getSelectedRobot().getPosX();
         int y = this.getSelectedRobot().getPosY();
 
@@ -349,7 +440,12 @@ public class GameBoard {
         }
     }
 
-    private boolean checkRobotNear(Cell.Direction dir){
+    /**
+     * Recherche si il a un robot just'a cote du robot selectione dans sa direction de deplacement
+     * @param dir la direction du robot selectione
+     * @return la presence d'un autre Robot
+     */
+    private boolean checkRobotNear(Direction dir){
         int x = this.getSelectedRobot().getPosX();
         int y = this.getSelectedRobot().getPosY();
 
@@ -385,6 +481,9 @@ public class GameBoard {
         return false;
     }
 
+    /**
+     * Selectionne un nouvau Symbol
+     */
     public void processSelectSelectedSymbol(){
         Random rand = new Random();
         Symbol symbol = GameBoard.context.getSelectedSymbol() ;
@@ -395,10 +494,21 @@ public class GameBoard {
         GameBoard.context.setStatus(CHOOSE_ROBOT);
     }
 
+    /**
+     * Regarde si un deplacement n'est pas diagonal
+     * @param x la position x ou le joueur veut deplacer le robot
+     * @param y la position y ou le joueur veut deplacer le robot
+     * @return si le deplacement n'est pas diagonale
+     */
     public boolean checkDiagonal(int x, int y) {
         return((this.selectedRobot.getPosX() == x) ||  (this.selectedRobot.getPosY() == y));
     }
 
+    /**
+     * Regarde si la manche est gagne
+     * une manche est gagne si le Robot de la bonne couleur est sur le symbole selectione
+     * @return si la manche est gagne
+     */
     public boolean checkWin(){
         int rx = this.selectedRobot.getPosX();
         int ry = this.selectedRobot.getPosY();
@@ -406,14 +516,19 @@ public class GameBoard {
                 && context.symbols[rx][ry] == context.selectedSymbol;
     }
 
+    /**
+     * Cree et positionne un Robot a emplacement Valide
+     * @param color la couleur du robot cree
+     * @return le robot cree
+     */
     public Robot createValidRobot(Color color){
         int posX = 8; int posY = 8;
         Robot robot = new Robot(color,posX,posY );
         Random rand = new Random();
 
         while ( (!((posX != 8 && posY != 7) || (posX != 7 && posY != 8))) && checkSuperpositionRobot(posX,posY)) {
-            posX = rand.nextInt(SIZE);
-            posY = rand.nextInt(SIZE);
+            posX = rand.nextInt(this.cells.length);
+            posY = rand.nextInt(this.cells.length);
             //System.out.println(posX + " " + posY);
         }
         robot.setPos(posX,posY);
@@ -421,6 +536,12 @@ public class GameBoard {
         return robot;
     }
 
+    /**
+     * Regarde si un Robot n'est pas sur une case du plateau
+     * @param x la position x du plateau
+     * @param y la position y du plateau
+     * @return si il y un robot sur cette case
+     */
     private boolean checkSuperpositionRobot(int x, int y){
         for (Robot robot : this.robots.values()){
             if(robot.getPosX() == x && robot.getPosY() == y){
@@ -430,6 +551,9 @@ public class GameBoard {
         return true;
     }
 
+    /**
+     * Fixe l'origine des robots
+     */
     public void setRobotsOrigin(){
         this.robotsOrigin = new HashMap<>();
         for(Robot robot : this.robots.values()){
@@ -438,10 +562,18 @@ public class GameBoard {
             this.robotsOrigin.put(robot,new int[]{x,y});
         }
     }
+
+    /**
+     * Selectionne un Robot
+     * @param color la couleur du Robot
+     */
     public void setSelectedRobot(Color color){
         this.selectedRobot = this.robots.get(color);
     }
 
+    /**
+     * Repositionne les robots a leur position innitiales
+     */
     public void restoreRobotOrigin(){
         for(Robot robot : this.robots.values()){
             int[]pos = this.robotsOrigin.get(robot);
@@ -449,5 +581,19 @@ public class GameBoard {
         }
     }
 
+    /**
+     * Fixe le temps de round
+     * @param time le temps d'un round
+     */
+    public void setTime(int time) {
+        this.time = time;
+    }
 
+    /**
+     * Recupere le temps d'un round
+     * @return le temps d'un round
+     */
+    public int getTime() {
+        return time;
+    }
 }

@@ -3,8 +3,11 @@ package isep.ricochetrobot;
 import java.util.HashMap;
 import java.util.Map;
 
-import static isep.ricochetrobot.Cell.Direction.*;
+import static isep.ricochetrobot.Direction.*;
 
+/**
+ * Enumeration qui represente les cases du plateau
+ */
 public enum Cell {
 
     //                            UP     RIGHT  DOWN   LEFT
@@ -23,12 +26,7 @@ public enum Cell {
     private Map<Direction, Boolean> block;
     private String url;
 
-    public enum Direction{
-        UP,
-        RIGHT,
-        DOWN,
-        LEFT;
-    }
+
 
 
     private Cell(boolean[] block, String url){
@@ -46,10 +44,18 @@ public enum Cell {
         this.url = url;
     }
 
+    /**
+     * Recuperation de l'url du mur
+     * @return l'url de l'image du mur
+     */
     public String getUrl() {
         return this.url;
     }
 
+    /**
+     * Recupere la hashmap qui inqique les bloquage de cette case
+     * @return la hashmap qui inqique les bloquage de cette case
+     */
     public Map<Direction, Boolean> getBlock() {
         return this.block;
     }

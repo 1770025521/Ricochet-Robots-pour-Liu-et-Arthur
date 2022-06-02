@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 import static isep.ricochetrobot.Color.*;
 import static isep.ricochetrobot.Status.*;
 
+/**
+ * Controleur du jeu. Fait le lien entre le plateau et l'interdace grapgique
+ */
 public class MainController implements Initializable {
 
     @FXML
@@ -48,11 +51,8 @@ public class MainController implements Initializable {
     @FXML
     private Label iaOutput;
 
-    Cell [][] board = GameBoard.context.getCells();
-    Symbol[][] symbols = GameBoard.context.getSymbols();
-
     Timeline timeline;
-    final int roundTime = 60*60;
+    final int roundTime = GameBoard.context.getTime();
     int time  = roundTime;
 
     IA ia = new IA();
@@ -82,15 +82,15 @@ public class MainController implements Initializable {
 
         Image tileImage = new Image("cell.png", 50, 50, false, false);
 
-        for(int y = 0; y < board.length; y++ ){
-            for (int x = 0; x < board.length; x++ ){
+        for(int y = 0; y < GameBoard.context.getCells().length; y++ ){
+            for (int x = 0; x < GameBoard.context.getCells().length; x++ ){
 
                 StackPane tileGui = new StackPane();
                 ImageView tileBackground = new ImageView(tileImage);
                 tileGui.getChildren().add(tileBackground);
 
-                String wallUrl = board[x][y].getUrl();
-                String symbolUrl = symbols[x][y].getUrl();
+                String wallUrl = GameBoard.context.getCells()[x][y].getUrl();
+                String symbolUrl = GameBoard.context.getSymbols()[x][y].getUrl();
 
                 if(wallUrl != null){
                     Image wallImage = new Image(wallUrl, 50, 50, false, false);
@@ -143,7 +143,7 @@ public class MainController implements Initializable {
             if (GameBoard.context.checkDiagonal(x,y)){
                 Robot robot = GameBoard.context.getSelectedRobot();
 
-                Cell.Direction dir = GameBoard.context.getDirectionMouv(x,y);
+                Direction dir = GameBoard.context.getDirectionMouv(x,y);
                 //System.out.println(dir);
 
                 GameBoard.context.processDeplacement(dir);

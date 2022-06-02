@@ -1,5 +1,8 @@
 package isep.ricochetrobot;
 
+/**
+ * Fonctions utiles pour le programme
+ */
 public class util {
 
     public static int[][] rotateTable(int[][] table) {

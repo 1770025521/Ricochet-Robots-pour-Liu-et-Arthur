@@ -1,5 +1,8 @@
 package isep.ricochetrobot;
 
+/**
+ * Enumeration des Boards qui vont composer un plateau final
+ */
 public enum Board {
     PLANCHE0(
 

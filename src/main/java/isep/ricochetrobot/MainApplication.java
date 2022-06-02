@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Classe qui lance le programme
+ */
 public class MainApplication extends Application {
 
     @Override
@@ -17,7 +20,6 @@ public class MainApplication extends Application {
         stage.show();
 
     }
-
 
     public  static void main(String[] args ) {
         launch();
