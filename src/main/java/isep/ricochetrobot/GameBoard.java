@@ -596,4 +596,12 @@ public class GameBoard {
     public int getTime() {
         return time;
     }
+
+    /**
+     * Selectionne un symbole
+     * @param symbol le symbole a selectioner
+     */
+    public void setSelectedSymbol(Symbol symbol){
+        this.selectedSymbol = symbol;
+    }
 }
